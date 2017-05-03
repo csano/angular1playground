@@ -1,8 +1,7 @@
 {
   "version": "0.0.0",
   "private": true,
-  "name": "phonecat-typescript",
-  "description": "A TypeScript conversion of Google's angular-phonecat library",
+  "name": "angular1playground",
   "repository": "",
   "license": "MIT",
   "devDependencies": {
