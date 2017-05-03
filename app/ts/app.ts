@@ -1,27 +1,11 @@
-'use strict'; //do we need this?
+'use strict'; 
 
-/* App Module */
+class MyController {
+  constructor(foo: FooService) {
+    console.log(foo.doSomething());
+  }
+}
 
-var phonecatApp: ng.IModule = angular.module('phonecatApp', [
-  'ngRoute',
-  'phonecatAnimations',
-  'phonecatControllers',
-  'phonecatFilters',
-  'phonecatServices'
-]);
+var m = angular.module('myApp', ['ngRoute', 'ngResource', 'testModule', 'components']);
 
-phonecatApp.config(['$routeProvider',
-  function($routeProvider: ng.route.IRouteProvider) {
-    $routeProvider.
-      when('/phones', {
-        templateUrl: 'partials/phone-list.html',
-        controller: 'PhoneListCtrl'
-      }).
-      when('/phones/:phoneId', {
-        templateUrl: 'partials/phone-detail.html',
-        controller: 'PhoneDetailCtrl'
-      }).
-      otherwise({
-        redirectTo: '/phones'
-      });
-  }]);
+m.controller('MyController', ['Foo', MyController]);
