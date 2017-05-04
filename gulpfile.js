@@ -7,10 +7,10 @@ var copy = require('gulp-copy');
 var tsc = require('gulp-typescript');
 var bower = require('gulp-bower');
 var tsProject = tsc.createProject('app/tsconfig.json'); 
-var buildOutput = 'build/';
-var appBuildOutput = buildOutput + 'app/';
-var testOutput = buildOutput + 'test/';
-var concatFileName = 'all.js';
+const buildOutput = 'build/';
+const appBuildOutput = buildOutput + 'app/';
+const testOutput = buildOutput + 'test/';
+const concatFileName = 'all.js';
 
 function copyFilesWithExtension(ext) {
   gulp
@@ -49,19 +49,5 @@ gulp.task('compile-ts', function () {
     .pipe(gulp.dest(appBuildOutput));
 
 });
-
-// /**
-//  * Remove all generated JavaScript files from TypeScript compilation.
-//  */
-// gulp.task('clean-ts', function (cb) {
-//   var typeScriptGenFiles = [
-//                               config.tsOutputPath +'/**/*.js',    // path to all JS files auto gen'd by editor
-//                               config.tsOutputPath +'/**/*.js.map', // path to all sourcemap files auto gen'd by editor
-//                               '!' + config.tsOutputPath + '/lib'
-//                            ];
-
-//   // delete the files
-//   del(typeScriptGenFiles, cb);
-// });
 
 gulp.task('default', ['compile-ts', 'install-bower-components', 'copy-css', 'copy-html']);
