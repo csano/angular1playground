@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var filter = require('gulp-filter');
 var copy = require('gulp-copy');
+var watch = require('gulp-watch');
 var tsc = require('gulp-typescript');
 var bower = require('gulp-bower');
 var tsProject = tsc.createProject('app/tsconfig.json'); 
@@ -11,6 +12,7 @@ const buildOutput = 'build/';
 const appBuildOutput = buildOutput + 'app/';
 const testOutput = buildOutput + 'test/';
 const concatFileName = 'all.js';
+const typescriptSources = 'app/ts/**/*.ts';
 
 function copyFilesWithExtension(ext) {
   gulp
@@ -30,8 +32,7 @@ gulp.task('install-bower-components', function() {
   return bower({ directory: 'build/app/bower_components' });
 });
 
-gulp.task('compile-ts', function () {
-
+function compileTypescript() {
   const sourceFilter = filter(['app/ts/**/*.js', '!app/ts/**/*.spec.js']);
   const testFilter = filter(['app/ts/**/*.spec.js']);
 
@@ -47,7 +48,14 @@ gulp.task('compile-ts', function () {
     .pipe(sourceFilter)
     .pipe(concat(concatFileName))
     .pipe(gulp.dest(appBuildOutput));
+}
 
+gulp.task('compile-ts', function () {
+  return compileTypescript();
+});
+
+gulp.task('watch-ts', function() {
+  return gulp.watch(typescriptSources, ['compile-ts']);
 });
 
 gulp.task('default', ['compile-ts', 'install-bower-components', 'copy-css', 'copy-html']);
