@@ -16,9 +16,9 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'build/bower_components/angular/angular.js',
-      'build/bower_components/angular/angular-mocks.js',
-      'build/bower_components/angular/angular-resource.js',
-      'build/bower_components/jasmine-core/lib/jasmine-core.js',
+      'build/bower_components/angular-mocks/angular-mocks.js',
+      'build/bower_components/angular-resource/angular-resource.js',
+      'build/bower_components/angular-route/angular-route.js',
       'build/app/all.js',
       'build/test/**/*.spec.js'
     ],
