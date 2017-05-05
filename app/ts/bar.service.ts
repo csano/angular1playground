@@ -1,14 +1,14 @@
 class BarService {
-  constructor(foo: FooService) {
+  constructor(private foo: FooService) {
 
   }
 
-  public doSomethingWithFoo() : void {
-
+  public doSomethingWithFoo(): String {
+    return this.foo.doSomething();
   }
 }
 
 angular
-  .module('testModule', [])
-  .service('Bar', ['Foo', BarService]);
+  .module("testModule", [])
+  .service("Bar", ["Foo", BarService]);
 
