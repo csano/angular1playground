@@ -9,6 +9,6 @@ class BarService {
 }
 
 angular
-  .module("testModule", [])
+  .module("testModule")
   .service("Bar", ["Foo", BarService]);
 

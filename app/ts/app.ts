@@ -4,6 +4,6 @@ class MyController {
   }
 }
 
-const m = angular.module("myApp", ["ngRoute", "ngResource", "testModule", "components"]);
-
-m.controller("MyController", ["Foo", MyController]);
+angular
+  .module("myApp")
+  .controller("MyController", ["Foo", MyController]);

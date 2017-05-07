@@ -10,5 +10,5 @@ class FooService {
 }
 
 angular
-  .module("testModule", [])
+  .module("testModule")
   .service("Foo", ["$resource", "$q", FooService]);
