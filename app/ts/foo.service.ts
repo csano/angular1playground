@@ -8,7 +8,3 @@ class FooService {
     return "doing something else";
   }
 }
-
-angular
-  .module("testModule")
-  .service("Foo", ["$resource", "$q", FooService]);
