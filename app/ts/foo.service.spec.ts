@@ -10,10 +10,7 @@ describe("foo service tests", () => {
     });
   });
 
-  it("should verify that resource is used", () => {
-    console.log(_resource_);
-
+  it("verify that resource is defined", () => {
     expect(_resource_).toBeDefined();
-
   });
 });
