@@ -2,4 +2,5 @@ angular
   .module("testModule", ["ngResource"])
   .service("Foo", ["$resource", "$q", FooService])
   .service("Bar", ["Foo", BarService])
-  .service("Baz", BazService);
+  .service("Baz", BazService)
+  .service("Car", ["$q", CarService]);

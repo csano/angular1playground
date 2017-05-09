@@ -1,5 +1,5 @@
 class BarService {
-  constructor(private foo: FooService, private baz: BazService) {
+  constructor(private foo: FooService, private baz: BazService, private carService: CarService) {
 
   }
 
@@ -10,4 +10,12 @@ class BarService {
   public doSomethingWithBaz() {
     return this.baz.doSomething();
   }
+  
+  public moveCars() {
+    this.carService.retrieveCars().then((car: Car) => {
+      car.move();
+
+    });
+  }
+  
 }
