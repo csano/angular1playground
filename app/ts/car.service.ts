@@ -21,6 +21,10 @@ class CarService {
     this._$q_ = $q;
   }
 
+  public retrieveCar(car: String, num: number): Car {
+    return null;
+  }
+
   public retrieveCars(): ng.IPromise<Car> {
     const deferred = this._$q_.defer();
     deferred.resolve((car: Car) => {

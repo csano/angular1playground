@@ -17,7 +17,7 @@ describe("bar service tests", () => {
   }));
 
   const foo = jasmine.createSpyObj("FooService", ["doSomething", "doSomethingElse"]);
-  const car = jasmine.createSpyObj("CarService", ["retrieveCars"]);
+  const car = jasmine.createSpyObj("CarService", ["retrieveCars", "retrieveCar"]);
 
   it("invokes the doSomething method on the Foo service", () => {
     foo.doSomething.and.returnValue("inside foo");
@@ -43,7 +43,7 @@ describe("bar service tests", () => {
   });
 
   it("handles car service promise", () => {
-    const bmw = jasmine.createSpyObj("car", ["move"]);
+    const bmw = jasmine.createSpyObj("Car", ["move"]);
 
     car.retrieveCars.and.returnValue(_q_.resolve(bmw));
 
@@ -53,5 +53,38 @@ describe("bar service tests", () => {
     $scope.$apply();
 
     expect(bmw.move).toHaveBeenCalled();
+  });
+
+  it("then is invoked on car service promise", () => {
+    const bmw = jasmine.createSpyObj("Car", ["move"]);
+
+    var promiseFake = {
+      then: () => { 
+        console.log('fake');
+      }
+    } as any;
+
+    let fakePromise = jasmine.createSpyObj(promiseFake, ['then']);
+
+    //let r = spyOn(resolve, 'then');
+    car.retrieveCars.and.returnValue(fakePromise);
+
+    const bar = new BarService(foo, bazService, car);
+    bar.moveCars();
+
+    $scope.$apply();
+
+    expect(fakePromise.then).toHaveBeenCalled();
+    console.log(fakePromise.then.calls.all());
+  });
+
+  it('verifies that retreiveCar is invoke with the expected parameter', () => {
+    const bar = new BarService(foo, bazService, car);
+
+    var result = bar.retrieveFord();
+
+    var list = car.retrieveCar.calls.all();
+    expect(list[0].args[0]).toBe("Ford");
+    expect(list[0].args[1]).toBe(1);
   });
 });

@@ -17,4 +17,8 @@ class BarService {
       car.move();
     });
   }
+
+  public retrieveFord(): Car {
+    return this.carService.retrieveCar("Ford", 1);
+  }
 }
