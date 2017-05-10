@@ -9,15 +9,18 @@ describe("bar service tests", () => {
     };
   });
 
-  var _q_ : ng.IQService;
-  beforeEach(inject(($q) => {
+  let _q_: ng.IQService;
+  let $scope: ng.IScope;
+  beforeEach(inject(($q, $rootScope) => {
     _q_ = $q;
+    $scope = $rootScope.$new();
   }));
 
+  const foo = jasmine.createSpyObj("FooService", ["doSomething", "doSomethingElse"]);
+  const car = jasmine.createSpyObj("CarService", ["retrieveCars"]);
+
   it("invokes the doSomething method on the Foo service", () => {
-    const foo = jasmine.createSpyObj("FooService", ["doSomething", "doSomethingElse"]);
-    const car = jasmine.createSpyObj("CarService", ["retrieveCars"]);
-     foo.doSomething.and.returnValue("inside foo");
+    foo.doSomething.and.returnValue("inside foo");
 
     const bar = new BarService(foo, bazService, car);
 
@@ -25,17 +28,12 @@ describe("bar service tests", () => {
   });
 
   it("invokes the doSomething method on the Baz service", () => {
-    const foo = jasmine.createSpyObj("FooService", ["doSomething", "doSomethingElse"]);
-    const car = jasmine.createSpyObj("CarService", ["retrieveCars"]);
-
     const bar = new BarService(foo, bazService, car);
 
     expect(bar.doSomethingWithBaz()).toBe("inside baz");
   });
 
   it("invokes the doSomething method on the Baz service via a stub", () => {
-    const foo = jasmine.createSpyObj("FooService", ["doSomething", "doSomethingElse"]);
-    const car = jasmine.createSpyObj("CarService", ["retrieveCars"]);
     const returnValue = "returnValue";
     spyOn(bazService, "doSomething").and.stub().and.returnValue(returnValue);
 
@@ -45,27 +43,15 @@ describe("bar service tests", () => {
   });
 
   it("handles car service promise", () => {
-    const foo = jasmine.createSpyObj("FooService", ["doSomething", "doSomethingElse"]);
-    const car = jasmine.createSpyObj("CarService", ["retrieveCars"]);
-    const returnValue = "returnValue";
     const bmw = jasmine.createSpyObj("car", ["move"]);
-    spyOn(bazService, "doSomething").and.stub().and.returnValue(returnValue);
-    spyOn(car, 'retrieveCars').and.callFake(() => {
-      var deferred = this.$q.defer();
-      deferred.resolve((car: Car) => {
-        return bmw;
-      });
-    });
+
+    car.retrieveCars.and.returnValue(_q_.resolve(bmw));
 
     const bar = new BarService(foo, bazService, car);
     bar.moveCars();
 
-    expect(car.move).toHaveBeenCalled();
+    $scope.$apply();
 
+    expect(bmw.move).toHaveBeenCalled();
   });
-
-
-
 });
-
-

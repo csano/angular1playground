@@ -10,12 +10,11 @@ class BarService {
   public doSomethingWithBaz() {
     return this.baz.doSomething();
   }
-  
-  public moveCars() {
+  public moveCars(): void {
     this.carService.retrieveCars().then((car: Car) => {
+      console.log("callback");
+      console.log(car);
       car.move();
-
     });
   }
-  
 }
