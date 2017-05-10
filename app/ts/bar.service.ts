@@ -10,4 +10,8 @@ class BarService {
   public doSomethingWithBaz() {
     return this.baz.doSomething();
   }
+
+  public invokeBazWithNumber(num: number) {
+    this.baz.doSomethingWithNumber(num);
+  }
 }

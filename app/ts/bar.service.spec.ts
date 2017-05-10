@@ -5,6 +5,9 @@ describe("my test", () => {
    bazService = {
       doSomething: () => {
         return "inside baz";
+      },
+      doSomethingWithNumber: (num: number) => {
+
       }
     };
   });
@@ -36,6 +39,15 @@ describe("my test", () => {
     expect(bar.doSomethingWithBaz()).toBe(returnValue);
   });
 
+  it("verifies doSomethingWithNumber is invoked with the number 5", () => {
+    const foo = jasmine.createSpyObj("FooService", ["doSomething", "doSomethingElse"]);
+    const baz = spyOn(bazService, "doSomethingWithNumber").and.callFake(() => {});
+    const expectedResult = 5;
+    const bar = new BarService(foo, bazService);
+
+    bar.invokeBazWithNumber(expectedResult);
+
+    expect(bazService.doSomethingWithNumber).toHaveBeenCalledWith(expectedResult);
+  });
+
 });
-
-
