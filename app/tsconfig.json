@@ -2,6 +2,12 @@
   "compilerOptions": {
     "inlineSourceMap": true,
     "inlineSources": true,
-    "target": "ES5"
+    "target": "ES5",
+    "lib": [
+      "dom",
+      "es2016",
+      "es5",
+      "es6"
+    ]
   }
 }
