@@ -4,4 +4,7 @@ angular
   .service('Bar', ['Foo', BarService])
   .service('Promise', BazService)
   .service('Baz', [PromiseService])
-  .service('Car', ['$q', CarService]);
+  .service('Car', ['$q', CarService])
+  .factory('mycar', (baz: BazService) : Car => {
+    return new Car('foo');
+  });

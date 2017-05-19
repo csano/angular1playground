@@ -22,7 +22,7 @@ class CarService {
   }
 
   public retrieveCar(car: String, num: number): Car {
-    return null;
+    return undefined;
   }
 
   public retrieveCars(): ng.IPromise<Car> {
