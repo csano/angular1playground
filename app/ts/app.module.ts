@@ -1,5 +1,5 @@
 angular
-  .module('myApp', ['ngRoute', 'testModule', 'components'])
+  .module('myApp', ['ngRoute'])
   .component('helloWorld', {
     template: `<h1>Hello, {{name}}</h1>`,
     controller: HelloWorldController

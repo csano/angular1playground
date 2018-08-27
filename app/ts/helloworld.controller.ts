@@ -1,6 +1,6 @@
 class HelloWorldController {
   public name: String = 'World!';
-  constructor($scope: ng.IScope, myCar) {
-    $scope.name = this.name;
+  constructor($scope: ng.IScope) {
+    $scope['name'] = this.name;
   }
 }

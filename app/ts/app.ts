@@ -1,9 +1,9 @@
 class MyController {
-  constructor(foo: FooService) {
-    console.log(foo.doSomething());
+  constructor() {
+    console.log('test');
   }
 }
 
 angular
-  .module("myApp")
-  .controller("MyController", ["Foo", MyController]);
+  .module('myApp')
+  .controller('MyController', [MyController]);
