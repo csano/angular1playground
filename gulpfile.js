@@ -6,10 +6,10 @@ var filter = require('gulp-filter');
 var copy = require('gulp-copy');
 var watch = require('gulp-watch');
 var tsc = require('gulp-typescript');
-var bower = require('gulp-bower');
 var tsProject = tsc.createProject('app/tsconfig.json'); 
 const buildOutput = 'build/';
 const appBuildOutput = buildOutput + 'app/';
+const appBuildNodeModulesOutput = appBuildOutput + 'node_modules/';
 const testOutput = buildOutput + 'test/';
 const concatFileName = 'all.js';
 const typescriptSources = 'app/ts/**/*.ts';
@@ -20,16 +20,24 @@ function copyFilesWithExtension(ext) {
     .pipe(copy(buildOutput, {}));
 }
 
+function copyNodeModules() {
+  gulp
+    .src(appBuildOutput)
+    .pipe(gulp.dest('./test'));
+
+
+} 
+
+gulp.task('copy-node-modules', function () {
+  return copyNodeModules();
+});
+
 gulp.task('copy-html', function () {
   return copyFilesWithExtension('html');
 });
 
 gulp.task('copy-css', function () {
   return copyFilesWithExtension('css');
-});
-
-gulp.task('install-bower-components', function() {
-  return bower({ directory: 'build/app/bower_components' });
 });
 
 function compileTypescript() {
@@ -55,7 +63,7 @@ gulp.task('compile-ts', function () {
 });
 
 gulp.task('watch-ts', function() {
-  return gulp.watch(typescriptSources, ['compile-ts']);
+  return gulp.watch(typescriptSources, ['copy-html', 'compile-ts']);
 });
 
-gulp.task('default', ['compile-ts', 'install-bower-components', 'copy-css', 'copy-html']);
+gulp.task('default', ['compile-ts', 'copy-css', 'copy-html', 'copy-node-modules']);
