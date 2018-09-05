@@ -9,9 +9,10 @@ var tsc = require('gulp-typescript');
 var tsProject = tsc.createProject('app/tsconfig.json'); 
 const buildOutput = 'build/';
 const appBuildOutput = buildOutput + 'app/';
-const appBuildNodeModulesOutput = appBuildOutput + 'node_modules/';
+const nodeModulesDest = appBuildOutput + 'node_modules/';
 const testOutput = buildOutput + 'test/';
 const concatFileName = 'all.js';
+const nodeModulesSrc = './node_modules/';
 const typescriptSources = 'app/ts/**/*.ts';
 
 function copyFilesWithExtension(ext) {
@@ -22,8 +23,8 @@ function copyFilesWithExtension(ext) {
 
 function copyNodeModules() {
   gulp
-    .src('./node_modules/**/*.*', { base: './node_modules/'})
-    .pipe(gulp.dest('./build/app/node_modules'));
+    .src(nodeModulesSrc + '**/*.*', { base: nodeModulesSrc})
+    .pipe(gulp.dest(nodeModulesDest));
 } 
 
 gulp.task('copy-node-modules', function () {
