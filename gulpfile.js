@@ -22,10 +22,8 @@ function copyFilesWithExtension(ext) {
 
 function copyNodeModules() {
   gulp
-    .src(appBuildOutput)
-    .pipe(gulp.dest('./test'));
-
-
+    .src('./node_modules/**/*.*', { base: './node_modules/'})
+    .pipe(gulp.dest('./build/app/node_modules'));
 } 
 
 gulp.task('copy-node-modules', function () {
