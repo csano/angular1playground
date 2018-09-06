@@ -13,7 +13,7 @@ const nodeModulesDest = appBuildOutput + 'node_modules/';
 const testOutput = buildOutput + 'test/';
 const concatFileName = 'all.js';
 const nodeModulesSrc = './node_modules/';
-const typescriptSources = 'app/ts/**/*.ts';
+const typescriptSources = 'app/**/*.ts';
 
 function copyFilesWithExtension(ext) {
   gulp
@@ -40,8 +40,8 @@ gulp.task('copy-css', function () {
 });
 
 function compileTypescript() {
-  const sourceFilter = filter(['app/ts/**/*.js', '!app/ts/**/*.spec.js']);
-  const testFilter = filter(['app/ts/**/*.spec.js']);
+  const sourceFilter = filter(['app/**/*.js', '!app/**/*.spec.js']);
+  const testFilter = filter(['app/**/*.spec.js']);
 
   var sourceResult = gulp
     .src(['app/**/*.!(component|module).ts', 'app/**/*.ts'])
