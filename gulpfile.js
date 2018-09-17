@@ -61,8 +61,10 @@ gulp.task('compile-ts', function () {
   return compileTypescript();
 });
 
-gulp.task('watch-ts', function() {
-  return gulp.watch(typescriptSources, ['copy-html', 'compile-ts']);
+gulp.task('compile-and-copy', ['compile-ts', 'copy-css', 'copy-html']);
+
+gulp.task('watch', function() {
+  return gulp.watch('app/**/*.*', ['compile-and-copy']);
 });
 
-gulp.task('default', ['compile-ts', 'copy-css', 'copy-html', 'copy-node-modules']);
+gulp.task('default', ['compile-and-copy', 'copy-node-modules']);
