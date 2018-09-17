@@ -6,8 +6,11 @@ class MyController {
 }
 
 angular
-  .module('myApp', [])
+  .module('myApp', ['ngRoute'])
   .controller('MyController', [MyController])
-  .component('hello-world', {
-    templateUrl: 'components/hello-world.html'
+  .component('helloWorld', {
+    templateUrl: './components/hello-world/hello-world.html',
+    bindings: {
+      name: '='
+    }
   });
