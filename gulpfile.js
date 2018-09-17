@@ -15,7 +15,7 @@ const concatFileName = 'all.js';
 const nodeModulesSrc = './node_modules/';
 const typescriptSources = 'app/**/*.ts';
 
-function copyFilesWithExtension(ext) {
+function copyAppFilesWithExtension(ext) {
   gulp
     .src('app/**/*.' + ext)
     .pipe(copy(buildOutput, {}));
@@ -23,7 +23,7 @@ function copyFilesWithExtension(ext) {
 
 function copyNodeModules() {
   gulp
-    .src(nodeModulesSrc + '**/*.*', { base: nodeModulesSrc})
+    .src(nodeModulesSrc + '**/*.*', { base: nodeModulesSrc })
     .pipe(gulp.dest(nodeModulesDest));
 } 
 
@@ -32,11 +32,11 @@ gulp.task('copy-node-modules', function () {
 });
 
 gulp.task('copy-html', function () {
-  return copyFilesWithExtension('html');
+  return copyAppFilesWithExtension('html');
 });
 
 gulp.task('copy-css', function () {
-  return copyFilesWithExtension('css');
+  return copyAppFilesWithExtension('css');
 });
 
 function compileTypescript() {
