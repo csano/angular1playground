@@ -44,7 +44,7 @@ function compileTypescript() {
   const testFilter = filter(['app/**/*.spec.js']);
 
   var sourceResult = gulp
-    .src(['app/**/*.!(component|module).ts', 'app/**/*.ts'])
+    .src(['app/**/*.!(module).ts', 'app/**/*.ts', 'app/**/*.module.ts'])
     .pipe(tsProject());
 
   sourceResult.js
