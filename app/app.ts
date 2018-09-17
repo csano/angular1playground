@@ -11,6 +11,6 @@ angular
   .component('helloWorld', {
     templateUrl: './components/hello-world/hello-world.html',
     bindings: {
-      name: '='
+      name: '<'
     }
   });
