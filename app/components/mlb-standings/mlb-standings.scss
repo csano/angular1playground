@@ -1,17 +1,21 @@
-$standard-data-column-width: 2rem;
+$standard-data-column-width: 2.5rem;
 
 .td-standings-header-team {
   width: 14rem;
+  text-align: left;
 }
 
 .td-standings-header-wins {
   width: $standard-data-column-width;
+  text-align: center;
 }
 
 .td-standings-header-losses {
   width: $standard-data-column-width;
+  text-align: center;
 }
 
 .td-standings-header-pct {
   width: $standard-data-column-width;
+  text-align: center;
 }
