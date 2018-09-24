@@ -1,7 +1,6 @@
-$h1-style: arial;
+@import "../../scss/_common.scss";
 
 h1 {
-  font: $h1-style; 
-  color: #c0c0c0;
+  color: $primary-color;
 }
   

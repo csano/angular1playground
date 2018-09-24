@@ -1,0 +1,17 @@
+$standard-data-column-width: 2rem;
+
+.td-standings-header-team {
+  width: 14rem;
+}
+
+.td-standings-header-wins {
+  width: $standard-data-column-width;
+}
+
+.td-standings-header-losses {
+  width: $standard-data-column-width;
+}
+
+.td-standings-header-pct {
+  width: $standard-data-column-width;
+}
