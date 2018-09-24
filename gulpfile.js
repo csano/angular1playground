@@ -1,19 +1,19 @@
 'use strict';
 
-var gulp = require('gulp');
 var concat = require('gulp-concat');
-var filter = require('gulp-filter');
 var copy = require('gulp-copy');
-var watch = require('gulp-watch');
+var filter = require('gulp-filter');
+var gulp = require('gulp');
+var sass = require('gulp-sass');
 var tsc = require('gulp-typescript');
 var tsProject = tsc.createProject('app/tsconfig.json'); 
+
 const buildOutput = 'build/';
 const appBuildOutput = buildOutput + 'app/';
 const nodeModulesDest = appBuildOutput + 'node_modules/';
 const testOutput = buildOutput + 'test/';
 const concatFileName = 'all.js';
 const nodeModulesSrc = './node_modules/';
-const typescriptSources = 'app/**/*.ts';
 
 function copyAppFilesWithExtension(ext) {
   gulp
@@ -39,6 +39,13 @@ gulp.task('copy-css', function () {
   return copyAppFilesWithExtension('css');
 });
 
+gulp.task('sass', function () {
+  return gulp.src('app/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(concat('all.css'))
+    .pipe(gulp.dest(appBuildOutput + '/css'));
+});
+
 function compileTypescript() {
   const sourceFilter = filter(['app/**/*.js', '!app/**/*.spec.js']);
   const testFilter = filter(['app/**/*.spec.js']);
@@ -61,7 +68,7 @@ gulp.task('compile-ts', function () {
   return compileTypescript();
 });
 
-gulp.task('compile-and-copy', ['compile-ts', 'copy-css', 'copy-html']);
+gulp.task('compile-and-copy', ['compile-ts', 'sass', 'copy-html']);
 
 gulp.task('watch', function() {
   return gulp.watch('app/**/*.*', ['compile-and-copy']);
