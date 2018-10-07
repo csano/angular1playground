@@ -1,21 +1,19 @@
 $standard-data-column-width: 2.5rem;
 
-.td-standings-header-team {
-  width: 14rem;
-  text-align: left;
+.td-standings-header {
+  width: $standard-data-column-width;
+  text-align: right;
+
+  &.division {
+    width: 14rem;
+    text-align: left;
+  }
 }
 
-.td-standings-header-wins {
-  width: $standard-data-column-width;
-  text-align: center;
-}
+.td-standings {
+  text-align: right;
 
-.td-standings-header-losses {
-  width: $standard-data-column-width;
-  text-align: center;
-}
-
-.td-standings-header-pct {
-  width: $standard-data-column-width;
-  text-align: center;
+  &.team {
+    text-align: left;
+  }
 }

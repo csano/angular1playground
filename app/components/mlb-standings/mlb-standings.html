@@ -1,16 +1,16 @@
 <div class="mlb-standings">
   <table>
     <tr>
-      <td class="td-standings-header-team">{{$ctrl.standings.league}}</td>
-      <td class="td-standings-header-wins">W</td>
-      <td class="td-standings-header-losses">L</td>
-      <td class="td-standings-header-percentage">Pct.</td>
+      <td class="td-standings-header division">{{$ctrl.standings.league}}</td>
+      <td class="td-standings-header wins">W</td>
+      <td class="td-standings-header losses">L</td>
+      <td class="td-standings-header percentage">Pct.</td>
     </tr>
     <tr ng-repeat="team in $ctrl.standings.teams">
-      <td class="td-standings-team">{{team.name}}</td>
-      <td class="td-standings-wins">{{team.wins}}</td>
-      <td class="td-standings-losses">{{team.losses}}</td>
-      <td class="td-standings-percentage">{{team.winningPercentage}}</td>
+      <td class="td-standings team">{{team.name}}</td>
+      <td class="td-standings wins">{{team.wins}}</td>
+      <td class="td-standings losses">{{team.losses}}</td>
+      <td class="td-standings percentage">{{team.winningPercentage}}</td>
     </tr>
   </table>
 </div>

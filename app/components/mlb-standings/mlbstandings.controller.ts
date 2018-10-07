@@ -6,10 +6,36 @@ class MlbStandingsController {
       teams: [
         {
           name: 'Boston Red Sox',
-          wins: 100,
-          losses: 45,
-          winningPercentage: 63
-        }
+          wins: 0,
+          losses: 0,
+          winningPercentage: 0
+        },
+        {
+          name: 'New York Yankees',
+          wins: 0,
+          losses: 0,
+          winningPercentage: 0
+        },
+        {
+          name: 'Tampa Bay Rays',
+          wins: 0,
+          losses: 0,
+          winningPercentage: 0
+        },
+        {
+          name: 'Toronto Blue Jays',
+          wins: 0,
+          losses: 0,
+          winningPercentage: 0
+        },
+        {
+          name: 'Baltimore Orioles',
+          wins: 0,
+          losses: 0,
+          winningPercentage: 0
+        },
+
+
       ]
     };
 
