@@ -4,9 +4,13 @@ var concat = require('gulp-concat');
 var copy = require('gulp-copy');
 var filter = require('gulp-filter');
 var gulp = require('gulp');
+var glob = require('glob');
+var browserify = require('browserify');
 var sass = require('gulp-sass');
 var tsc = require('gulp-typescript');
 var tsProject = tsc.createProject('app/tsconfig.json'); 
+var tsify = require('tsify');
+var source = require('vinyl-source-stream');
 
 const buildOutput = 'build/';
 const appBuildOutput = buildOutput + 'app/';
@@ -62,13 +66,32 @@ function compileTypescript() {
     .pipe(sourceFilter)
     .pipe(concat(concatFileName))
     .pipe(gulp.dest(appBuildOutput));
+
+        /*
+      //.plugin(tsify, { noImplicitAny: true })
+      .bundle()
+      .pipe(gulp.dest('.'));
+      //.pipe(concat(concatFileName))
+      //.pipe(gulp.dest(appBuildOutput));
+      */
 }
+
+gulp.task('browserify', function() {
+  var files = glob.sync('app/**/*.ts')
+  console.log(files);
+  browserify({entries: files})
+      .plugin(tsify, { noImplicitAny: false, tsProject: 'tsconfig.json'})
+      .bundle()
+      .pipe(source(concatFileName))
+      .pipe(gulp.dest(appBuildOutput));
+
+});
 
 gulp.task('compile-ts', function () {
   return compileTypescript();
 });
 
-gulp.task('compile-and-copy', ['compile-ts', 'sass', 'copy-html']);
+gulp.task('compile-and-copy', ['browserify', 'sass', 'copy-html']);
 
 gulp.task('watch', function() {
   return gulp.watch('app/**/*.*', ['compile-and-copy']);
