@@ -5,6 +5,9 @@ import schema from './graphql/schema';
 
 const app = express();
 const dev = process.env.NODE_ENV === 'development';
+const cors = require('cors');
+
+app.use(cors());
 
 app.use('/graphql', graphqlHTTP({
   schema,

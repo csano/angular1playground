@@ -14,7 +14,7 @@ angular
   .config(apolloProvider => {
     const client = new ApolloClient({
         networkInterface: createNetworkInterface({
-          uri: 'https://kqn8q1rj87.lp.gql.zone/graphql',
+          uri: 'http://localhost:3004/graphql',
         }),
       }
     );
@@ -23,7 +23,11 @@ angular
       .query({
         query: gql`
         query {
-          hello
+          standings {
+            teams {
+              name
+            }
+          }
         }
       `
       })
