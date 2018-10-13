@@ -1,11 +1,10 @@
+import cors from 'cors';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
-
 import schema from './graphql/schema';
 
 const app = express();
 const dev = process.env.NODE_ENV === 'development';
-const cors = require('cors');
 
 app.use(cors());
 
