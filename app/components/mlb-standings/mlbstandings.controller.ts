@@ -1,6 +1,10 @@
+import * as angular from 'angular';
+import { StandingsService } from '../../services/standings/standingsService';
+
+
 class MlbStandingsController {
   public standings;
-  constructor($scope: ng.IScope) {
+  constructor(standingsService: StandingsService) {
     this.standings = {
       league: 'AL East',
       teams: [
@@ -46,5 +50,5 @@ angular
   .module('myApp')
   .component('mlbStandings', {
     templateUrl: './components/mlb-standings/mlb-standings.html',
-    controller: MlbStandingsController
+    controller: ['StandingsService', MlbStandingsController]
   });
