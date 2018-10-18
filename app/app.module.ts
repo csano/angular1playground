@@ -7,6 +7,7 @@ angular
   // .module('myApp', ['ngRoute']);
   .module('myApp', ['ngRoute', AngularApollo, 'services'])
   .config(apolloProvider => {
+    console.log(apolloProvider);
     const client = new ApolloClient({
         networkInterface: createNetworkInterface({
           uri: 'http://localhost:3004/graphql',

@@ -1,12 +1,19 @@
 import * as angular from 'angular';
+import { ApolloClient, createNetworkInterface } from 'apollo-client';
 import { LeagueStanding } from '../../models/standings/leagueStanding';
+import { ApolloService } from '../apollo/apolloService';
+
 
 export class StandingsService {
-  public StandingsService($http: any) {
-    console.log($http);
+  constructor($http: any, private apolloService: ApolloService) {
+    console.log(apolloService);
   }
 
-  public getStandings(): LeagueStanding[] {
+  public getStandings(): Promise<LeagueStanding[]> {
+    return this.apolloService.query('').then(result => {
+      return result.data as LeagueStanding[];
+    });
+    /*
     return [{
       name: 'AL East',
       teams: [
@@ -41,9 +48,10 @@ export class StandingsService {
         }
       ]
     }];
+    */
   }
 }
 
 angular
-  .module('services', [])
-  .service('StandingsService', ['$http', StandingsService]);
+  .module('services')
+  .service('StandingsService', ['$http', 'ApolloService', StandingsService]);
