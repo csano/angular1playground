@@ -1,12 +1,12 @@
 <div class="mlb-standings">
-  <table ng-repeat="league in standings">
+  <table ng-repeat="standing in standings">
     <tr>
-      <td class="td-standings-header division">{{league.name}}</td>
+      <td class="td-standings-header division">{{standing.name}}</td>
       <td class="td-standings-header wins">W</td>
       <td class="td-standings-header losses">L</td>
       <td class="td-standings-header percentage">Pct.</td>
     </tr>
-    <tr ng-repeat="team in league.teams">
+    <tr ng-repeat="team in standing.teams">
       <td class="td-standings team">{{team.name}}</td>
       <td class="td-standings wins">{{team.wins}}</td>
       <td class="td-standings losses">{{team.losses}}</td>
