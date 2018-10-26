@@ -2,6 +2,7 @@ import * as angular from 'angular';
 import { LeagueStanding } from '../../models/standings/leagueStanding';
 import { ApolloService } from '../apollo/apolloService';
 import gql from 'graphql-tag';
+import { valueFromAST } from '../../../node_modules/@types/graphql';
 
 export class StandingsService {
   private _$q_;
@@ -10,11 +11,11 @@ export class StandingsService {
   }
 
   public getStandings(): ng.IPromise<{}> {
-    const deferred = this._$q_.defer();
 
     const query = gql`
       query {
         standings {
+          name,
           teams {
             name,
             wins,
@@ -25,9 +26,11 @@ export class StandingsService {
       }
     `;
 
-    deferred.resolve(this.apolloService.query(query).then(r => {
+    const deferred = this._$q_.defer();
+
+    this.apolloService.query(query).then(r => {
       const standings = r.data['standings'] as LeagueStanding[];
-      const out = [];
+      const leagues = [];
       for (const ls of standings) {
         const teams = [];
         for (const team of ls.teams) {
@@ -38,13 +41,13 @@ export class StandingsService {
             winningPercentage: team.winningPercentage
           });
         }
-        out.push({
+        leagues.push({
           name: ls.name,
           teams: teams
         });
       }
-      return out;
-    }));
+      deferred.resolve(leagues);
+    });
 
     return deferred.promise;
  

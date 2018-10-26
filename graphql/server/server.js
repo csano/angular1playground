@@ -10,7 +10,7 @@ app.use(cors());
 
 app.use('/graphql', graphqlHTTP({
   schema,
-  graphiql: dev,
+  graphiql: true
 }));
 
 app.use('/', (req, res) => {

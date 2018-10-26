@@ -4,7 +4,8 @@ import { StandingsService } from '../../services/standings/standingsService';
 class MlbStandingsController {
   public standings;
   constructor($scope: any, standingsService: StandingsService) {
-    standingsService.getStandings().then((r) => {
+    $scope.standings = standingsService.getStandings().then((r) => {
+      console.log(r);
       $scope.standings = r;
     });
   }

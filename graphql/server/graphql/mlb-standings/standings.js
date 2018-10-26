@@ -1,7 +1,4 @@
-import {
-  GraphQLList,
-  GraphQLNonNull,
-} from 'graphql';
+import { GraphQLList, GraphQLNonNull } from 'graphql';
 
 import {
   StandingsType,
@@ -13,7 +10,7 @@ const standingsQueries = {
     resolve: async() => {
       return await new Promise(x => {
         x([{
-          league: 'AL East',
+          name: 'AL East',
           teams: [
             {
               name: 'Boston Red Sox',
@@ -71,6 +68,43 @@ const standingsQueries = {
               runsAllowed: 0
             },
           ]
+        }, {
+          name: 'AL Central',
+          teams: [{
+              name: 'Cleveland Indians',
+              wins: 0,
+              losses: 0,
+              winningPercentage: 0,
+              gamesBack: 0,
+              lastTen: '',
+              streak: '',
+              runsScored: 0,
+              runsAllowed: 0
+          }, 
+          {
+              name: 'Kansas City Royals',
+              wins: 0,
+              losses: 0,
+              winningPercentage: 0,
+              gamesBack: 0,
+              lastTen: '',
+              streak: '',
+              runsScored: 0,
+              runsAllowed: 0
+          }, 
+          {
+              name: 'Minnesota Twins',
+              wins: 0,
+              losses: 0,
+              winningPercentage: 0,
+              gamesBack: 0,
+              lastTen: '',
+              streak: '',
+              runsScored: 0,
+              runsAllowed: 0
+          }
+
+        ]
         }])
       });
     }

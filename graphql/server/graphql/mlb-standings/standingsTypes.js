@@ -11,7 +11,7 @@ const StandingsType = new GraphQLObjectType({
   name: 'StandingsType',
   description: 'Standings type definition',
   fields: () => ({
-    league: {
+    name: {
       type: new GraphQLNonNull(GraphQLString),
     },
     teams: {
