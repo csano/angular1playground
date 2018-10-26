@@ -14,20 +14,7 @@ export class ApolloService {
     });
   }
 
-  public query(foo: any): Promise<ApolloQueryResult<{}>> {
-    const query = gql`
-      query {
-        standings {
-          teams {
-            name,
-            wins,
-            losses,
-            winningPercentage
-          }
-        }
-      }
-    `;
-
+  public query(query: any): Promise<ApolloQueryResult<{}>> {
     return this.client.query({ query: query });
   }
 
