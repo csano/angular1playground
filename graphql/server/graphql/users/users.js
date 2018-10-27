@@ -1,4 +1,4 @@
-import { GraphQLList, GraphQLNonNull } from 'graphql';
+import { GraphQLList, GraphQLNonNull, GraphQLID } from 'graphql';
 import { internet, name, random } from 'faker';
 import isEmail from 'validator/lib/isEmail';
 import { UserType, UserInputType } from './usersTypes';

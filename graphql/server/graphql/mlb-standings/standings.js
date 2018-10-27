@@ -1,4 +1,4 @@
-import { GraphQLList, GraphQLNonNull } from 'graphql';
+import { GraphQLList, GraphQLNonNull, GraphQlInt, GraphQLID} from 'graphql';
 
 import {
   StandingsType,
@@ -14,6 +14,7 @@ const standingsQueries = {
           teams: [
             {
               team: {
+                id: 1,
                 name: 'Boston Red Sox'
               },
               wins: 0,
@@ -27,6 +28,7 @@ const standingsQueries = {
             },
             {
               team: {
+                id: 1,
                 name: 'New York Yankees',
               },
               wins: 0,
@@ -40,6 +42,7 @@ const standingsQueries = {
             },
             {
               team: {
+                id: 1,
                 name: 'Tampa Bay Rays',
               },
               wins: 0,
@@ -53,6 +56,7 @@ const standingsQueries = {
             },
             {
               team: {
+                id: 1,
                 name: 'Toronto Blue Jays',
               },
               wins: 0,
@@ -66,6 +70,7 @@ const standingsQueries = {
             },
             {
               team: {
+                id: 1,
                 name: 'Baltimore Orioles',
               },
               wins: 0,
@@ -82,6 +87,7 @@ const standingsQueries = {
           name: 'AL Central',
           teams: [{
             team: {
+              id: 1,
               name: 'Cleveland Indians',
             },
             wins: 0,
@@ -95,6 +101,7 @@ const standingsQueries = {
           },
           {
             team: {
+              id: 1,
               name: 'Kansas City Royals',
             },
             wins: 0,
@@ -108,6 +115,7 @@ const standingsQueries = {
           },
           {
             team: {
+              id: 1,
               name: 'Minnesota Twins',
             },
             wins: 0,
@@ -118,9 +126,7 @@ const standingsQueries = {
             streak: '',
             runsScored: 0,
             runsAllowed: 0
-          }
-
-          ]
+          }]
         }])
       });
     }

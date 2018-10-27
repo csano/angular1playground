@@ -2,10 +2,25 @@ import {
   GraphQLString,
   GraphQLObjectType,
   GraphQLNonNull,
+  GraphQLID,
   GraphQLInt,
   GraphQLList,
   GraphQLFloat,
 } from 'graphql';
+
+
+const Team = new GraphQLObjectType({
+  name: 'Team',
+  description: '',
+  fields: () => ({
+    id: {
+      type: new GraphQLNonNull(GraphQLID)
+    },
+    name: {
+      type: new GraphQLNonNull(GraphQLString),
+    }
+  })
+});
 
 const StandingsType = new GraphQLObjectType({
   name: 'StandingsType',
@@ -17,16 +32,6 @@ const StandingsType = new GraphQLObjectType({
     teams: {
       type: new GraphQLList(TeamStandingsType),
     },
-  }),
-});
-
-const TeamType = new GraphQLObjectType({
-  name: 'TeamType',
-  description: '',
-  fields: () => ({
-    name: {
-      type: new GraphQLNonNull(GraphQLString),
-    }
   })
 });
 
@@ -35,7 +40,7 @@ const TeamStandingsType = new GraphQLObjectType({
   description: '',
   fields: () => ({
     team: {
-      type: new GraphQLNonNull(TeamType),
+      type: new GraphQLNonNull(Team),
     },
     wins: {
       type: new GraphQLNonNull(GraphQLInt),
