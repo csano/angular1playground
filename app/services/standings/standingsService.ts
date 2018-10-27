@@ -17,7 +17,9 @@ export class StandingsService {
         standings {
           name,
           teams {
-            name,
+            team {
+              name
+            },
             wins,
             losses,
             winningPercentage
@@ -35,7 +37,9 @@ export class StandingsService {
         const teams = [];
         for (const team of ls.teams) {
           teams.push({
-            name: team.name,
+            team: {
+              name: team.team.name
+            },
             wins: team.wins,
             losses: team.losses,
             winningPercentage: team.winningPercentage

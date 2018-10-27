@@ -20,12 +20,22 @@ const StandingsType = new GraphQLObjectType({
   }),
 });
 
-const TeamStandingsType = new GraphQLObjectType({
-  name: 'TeamStandingsType',
+const TeamType = new GraphQLObjectType({
+  name: 'TeamType',
   description: '',
   fields: () => ({
     name: {
       type: new GraphQLNonNull(GraphQLString),
+    }
+  })
+});
+
+const TeamStandingsType = new GraphQLObjectType({
+  name: 'TeamStandingsType',
+  description: '',
+  fields: () => ({
+    team: {
+      type: new GraphQLNonNull(TeamType),
     },
     wins: {
       type: new GraphQLNonNull(GraphQLInt),

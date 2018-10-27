@@ -1,14 +1,7 @@
-import {
-  GraphQLList,
-  GraphQLNonNull,
-} from 'graphql';
+import { GraphQLList, GraphQLNonNull } from 'graphql';
 import { internet, name, random } from 'faker';
 import isEmail from 'validator/lib/isEmail';
-
-import {
-  UserType,
-  UserInputType,
-} from './usersTypes';
+import { UserType, UserInputType } from './usersTypes';
 
 const userQueries = {
   users: {

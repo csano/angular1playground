@@ -6,11 +6,11 @@
       <td class="td-standings-header losses">L</td>
       <td class="td-standings-header percentage">Pct.</td>
     </tr>
-    <tr ng-repeat="team in standing.teams">
-      <td class="td-standings team">{{team.name}}</td>
-      <td class="td-standings wins">{{team.wins}}</td>
-      <td class="td-standings losses">{{team.losses}}</td>
-      <td class="td-standings percentage">{{team.winningPercentage}}</td>
+    <tr ng-repeat="teamStanding in standing.teams">
+      <td class="td-standings team">{{teamStanding.team.name}}</td>
+      <td class="td-standings wins">{{teamStanding.wins}}</td>
+      <td class="td-standings losses">{{teamStanding.losses}}</td>
+      <td class="td-standings percentage">{{teamStanding.winningPercentage}}</td>
     </tr>
   </table>
 </div>
