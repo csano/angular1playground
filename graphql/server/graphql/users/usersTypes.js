@@ -5,6 +5,7 @@ import {
   GraphQLObjectType,
   GraphQLNonNull,
 } from 'graphql';
+import { buildSchema } from 'graphql';
 
 const UserType = new GraphQLObjectType({
   name: 'UserType',
