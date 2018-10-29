@@ -6,9 +6,12 @@ import { mergeSchemas } from 'graphql-tools';
 import { userSchema } from './graphql/users/userSchema'
 import { standingsSchema } from './graphql/mlb-standings/standingsSchema'
 
+const fetch = require('node-fetch');
+
 const app = express();
 
 app.use(cors());
+console.log('test');
 
 const schema = mergeSchemas({
   schemas: [userSchema, standingsSchema],
@@ -18,125 +21,7 @@ const schema = mergeSchemas({
         return [{id: 1, name: 'foo' }]
       },
       standings: () => {
-        return [{
-          name: 'AL East',
-          teams: [
-            {
-              team: {
-                id: 1,
-                name: 'Boston Red Sox'
-              },
-              wins: 0,
-              losses: 0,
-              winningPercentage: 0,
-              gamesBack: 0,
-              lastTen: '',
-              streak: '',
-              runsScored: 0,
-              runsAllowed: 0
-            },
-            {
-              team: {
-                id: 1,
-                name: 'New York Yankees',
-              },
-              wins: 0,
-              losses: 0,
-              winningPercentage: 0,
-              gamesBack: 0,
-              lastTen: '',
-              streak: '',
-              runsScored: 0,
-              runsAllowed: 0
-            },
-            {
-              team: {
-                id: 1,
-                name: 'Tampa Bay Rays',
-              },
-              wins: 0,
-              losses: 0,
-              winningPercentage: 0,
-              gamesBack: 0,
-              lastTen: '',
-              streak: '',
-              runsScored: 0,
-              runsAllowed: 0
-            },
-            {
-              team: {
-                id: 1,
-                name: 'Toronto Blue Jays',
-              },
-              wins: 0,
-              losses: 0,
-              winningPercentage: 0,
-              gamesBack: 0,
-              lastTen: '',
-              streak: '',
-              runsScored: 0,
-              runsAllowed: 0
-            },
-            {
-              team: {
-                id: 1,
-                name: 'Baltimore Orioles',
-              },
-              wins: 0,
-              losses: 0,
-              winningPercentage: 0,
-              gamesBack: 0,
-              lastTen: '',
-              streak: '',
-              runsScored: 0,
-              runsAllowed: 0
-            },
-          ]
-        }, {
-          name: 'AL Central',
-          teams: [{
-            team: {
-              id: 1,
-              name: 'Cleveland Indians',
-            },
-            wins: 0,
-            losses: 0,
-            winningPercentage: 0,
-            gamesBack: 0,
-            lastTen: '',
-            streak: '',
-            runsScored: 0,
-            runsAllowed: 0
-          },
-          {
-            team: {
-              id: 1,
-              name: 'Kansas City Royals',
-            },
-            wins: 0,
-            losses: 0,
-            winningPercentage: 0,
-            gamesBack: 0,
-            lastTen: '',
-            streak: '',
-            runsScored: 0,
-            runsAllowed: 0
-          },
-          {
-            team: {
-              id: 1,
-              name: 'Minnesota Twins',
-            },
-            wins: 0,
-            losses: 0,
-            winningPercentage: 0,
-            gamesBack: 0,
-            lastTen: '',
-            streak: '',
-            runsScored: 0,
-            runsAllowed: 0
-          }]
-        }];
+        return fetch('http://localhost:3120/api/mlb/standings').then(x => { return x.json(); }); 
       }
     }
   }
