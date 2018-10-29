@@ -19,8 +19,8 @@ app.get("/api/mlb/standings", (req, res, next) => {
         losses: 0,
         winningPercentage: 0,
         gamesBack: 0,
-        lastTen: '',
-        streak: '',
+        lastTen: 'W0',
+        streak: '0-0',
         runsScored: 0,
         runsAllowed: 0
       },
@@ -33,8 +33,8 @@ app.get("/api/mlb/standings", (req, res, next) => {
         losses: 0,
         winningPercentage: 0,
         gamesBack: 0,
-        lastTen: '',
-        streak: '',
+        lastTen: 'W0',
+        streak: '0-0',
         runsScored: 0,
         runsAllowed: 0
       },
@@ -47,8 +47,8 @@ app.get("/api/mlb/standings", (req, res, next) => {
         losses: 0,
         winningPercentage: 0,
         gamesBack: 0,
-        lastTen: '',
-        streak: '',
+        lastTen: 'W0',
+        streak: '0-0',
         runsScored: 0,
         runsAllowed: 0
       },
@@ -61,8 +61,8 @@ app.get("/api/mlb/standings", (req, res, next) => {
         losses: 0,
         winningPercentage: 0,
         gamesBack: 0,
-        lastTen: '',
-        streak: '',
+        lastTen: 'W0',
+        streak: '0-0',
         runsScored: 0,
         runsAllowed: 0
       },
@@ -75,8 +75,8 @@ app.get("/api/mlb/standings", (req, res, next) => {
         losses: 0,
         winningPercentage: 0,
         gamesBack: 0,
-        lastTen: '',
-        streak: '',
+        lastTen: 'W0',
+        streak: '0-0',
         runsScored: 0,
         runsAllowed: 0
       },
@@ -106,8 +106,8 @@ app.get("/api/mlb/standings", (req, res, next) => {
       losses: 0,
       winningPercentage: 0,
       gamesBack: 0,
-      lastTen: '',
-      streak: '',
+      lastTen: 'W0',
+      streak: '0-0',
       runsScored: 0,
       runsAllowed: 0
     },
@@ -120,8 +120,8 @@ app.get("/api/mlb/standings", (req, res, next) => {
       losses: 0,
       winningPercentage: 0,
       gamesBack: 0,
-      lastTen: '',
-      streak: '',
+      lastTen: 'W0',
+      streak: '0-0',
       runsScored: 0,
       runsAllowed: 0
     }]
