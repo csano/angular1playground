@@ -22,7 +22,8 @@ export class StandingsService {
             },
             wins,
             losses,
-            winningPercentage
+            winningPercentage,
+            gamesBack
           }
         }
       }
@@ -42,7 +43,8 @@ export class StandingsService {
             },
             wins: team.wins,
             losses: team.losses,
-            winningPercentage: team.winningPercentage
+            winningPercentage: team.winningPercentage,
+            gamesBack: team.gamesBack
           });
         }
         leagues.push({

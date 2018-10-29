@@ -5,12 +5,14 @@
       <td class="td-standings-header wins">W</td>
       <td class="td-standings-header losses">L</td>
       <td class="td-standings-header percentage">Pct.</td>
+      <td class="td-standings-header games-back">GB</td>
     </tr>
     <tr ng-repeat="teamStanding in standing.teams">
       <td class="td-standings team">{{teamStanding.team.name}}</td>
       <td class="td-standings wins">{{teamStanding.wins}}</td>
       <td class="td-standings losses">{{teamStanding.losses}}</td>
       <td class="td-standings percentage">{{teamStanding.winningPercentage}}</td>
+      <td class="td-standings games-back">{{teamStanding.gamesBack}}</td>
     </tr>
   </table>
 </div>
