@@ -1,34 +1,17 @@
 import cors from 'cors';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
-import schema from './graphql/schema';
-import { buildSchema } from 'graphql';
-import {
-  makeExecutableSchema,
-  addMockFunctionsToSchema,
-  mergeSchemas,
-} from 'graphql-tools';
 
+import { mergeSchemas } from 'graphql-tools';
 import { userSchema } from './graphql/users/userSchema'
 import { standingsSchema } from './graphql/mlb-standings/standingsSchema'
 
 const app = express();
-const dev = process.env.NODE_ENV === 'development';
 
 app.use(cors());
 
-var q = buildSchema(`
-  type Bar {
-    id: ID!,
-    name: String!
-  }
-  type Query {
-    bars: [Bar],
-  }
-`)
-
-var m = mergeSchemas({
-  schemas: [userSchema, q, standingsSchema],
+const schema = mergeSchemas({
+  schemas: [userSchema, standingsSchema],
   resolvers: {
     Query: {
       users: () => {
@@ -160,7 +143,7 @@ var m = mergeSchemas({
 });
 
 app.use('/graphql', graphqlHTTP({
-  schema: m,
+  schema: schema,
   // rootValue: resolvers,
   graphiql: true
 }));
